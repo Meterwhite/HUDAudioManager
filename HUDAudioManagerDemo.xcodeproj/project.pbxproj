@@ -14,6 +14,9 @@
 		18311ADF254E5E300087D3E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18311ADE254E5E300087D3E6 /* Assets.xcassets */; };
 		18311AE2254E5E300087D3E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18311AE0254E5E300087D3E6 /* LaunchScreen.storyboard */; };
 		18311AE5254E5E300087D3E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311AE4254E5E300087D3E6 /* main.m */; };
+		18311AFA254E60910087D3E6 /* HUDAudio.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18311AF5254E60910087D3E6 /* HUDAudio.bundle */; };
+		18311AFB254E60910087D3E6 /* HUDAudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311AF8254E60910087D3E6 /* HUDAudioView.m */; };
+		18311AFC254E60910087D3E6 /* HUDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311AF9254E60910087D3E6 /* HUDAudioManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,11 @@
 		18311AE1254E5E300087D3E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18311AE3254E5E300087D3E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18311AE4254E5E300087D3E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		18311AF5254E60910087D3E6 /* HUDAudio.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HUDAudio.bundle; sourceTree = "<group>"; };
+		18311AF6254E60910087D3E6 /* HUDAudioView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDAudioView.h; sourceTree = "<group>"; };
+		18311AF7254E60910087D3E6 /* HUDAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDAudioManager.h; sourceTree = "<group>"; };
+		18311AF8254E60910087D3E6 /* HUDAudioView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDAudioView.m; sourceTree = "<group>"; };
+		18311AF9254E60910087D3E6 /* HUDAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDAudioManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +53,7 @@
 		18311AC6254E5E2E0087D3E6 = {
 			isa = PBXGroup;
 			children = (
+				18311AF4254E60910087D3E6 /* HUDAudioManager */,
 				18311AD1254E5E2E0087D3E6 /* HUDAudioManagerDemo */,
 				18311AD0254E5E2E0087D3E6 /* Products */,
 			);
@@ -75,6 +84,18 @@
 			);
 			path = HUDAudioManagerDemo;
 			sourceTree = "<group>";
+		};
+		18311AF4254E60910087D3E6 /* HUDAudioManager */ = {
+			isa = PBXGroup;
+			children = (
+				18311AF5254E60910087D3E6 /* HUDAudio.bundle */,
+				18311AF7254E60910087D3E6 /* HUDAudioManager.h */,
+				18311AF9254E60910087D3E6 /* HUDAudioManager.m */,
+				18311AF6254E60910087D3E6 /* HUDAudioView.h */,
+				18311AF8254E60910087D3E6 /* HUDAudioView.m */,
+			);
+			path = HUDAudioManager;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -135,6 +156,7 @@
 			files = (
 				18311AE2254E5E300087D3E6 /* LaunchScreen.storyboard in Resources */,
 				18311ADF254E5E300087D3E6 /* Assets.xcassets in Resources */,
+				18311AFA254E60910087D3E6 /* HUDAudio.bundle in Resources */,
 				18311ADD254E5E2E0087D3E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,9 +168,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18311AFC254E60910087D3E6 /* HUDAudioManager.m in Sources */,
 				18311ADA254E5E2E0087D3E6 /* ViewController.m in Sources */,
 				18311AD4254E5E2E0087D3E6 /* AppDelegate.m in Sources */,
 				18311AE5254E5E300087D3E6 /* main.m in Sources */,
+				18311AFB254E60910087D3E6 /* HUDAudioView.m in Sources */,
 				18311AD7254E5E2E0087D3E6 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
