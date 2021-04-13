@@ -136,7 +136,7 @@
 #pragma mark - 本地播放 不处理中断
 
 - (void)playFile:(NSString *)path completion:(void(^)(void))completion {
-    if(!path) return;
+    if (!path) return;
     /// 默认扬声器播放
     AVAudioSession * session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:0];
@@ -173,7 +173,6 @@
 
 - (void)whenInterrupted:(NSNotification *)ntf {
     if(!_audioPlayer || !_audioPlayer.isPlaying) return;
-//    CAL_BLOCK(_whenFilePlayedSuc);
     _whenFilePlayedSuc ? _whenFilePlayedSuc() : 0;
 //    DELOG(@"音频文件播放被打断");
     _audioPlayer = nil;
@@ -188,9 +187,9 @@
     if (permission == AVAudioSessionRecordPermissionDenied || permission == AVAudioSessionRecordPermissionUndetermined) {
         [AVAudioSession.sharedInstance requestRecordPermission:^(BOOL granted) {
             if (!granted) {
-                UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"无法访问麦克风" message:@"开启麦克风权限才能发送语音消息" preferredStyle:UIAlertControllerStyleAlert];
-                [ac addAction:[UIAlertAction actionWithTitle:@"以后再说" style:UIAlertActionStyleCancel handler:nil]];
-                [ac addAction:[UIAlertAction actionWithTitle:@"去开启" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Unable to access microphone" message:@"Turn on microphone permissions to send voice messages" preferredStyle:UIAlertControllerStyleAlert];
+                [ac addAction:[UIAlertAction actionWithTitle:@"Not now" style:UIAlertActionStyleCancel handler:nil]];
+                [ac addAction:[UIAlertAction actionWithTitle:@"Go to open" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     UIApplication *app = [UIApplication sharedApplication];
                     NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
                     if ([app canOpenURL:settingsURL]) {
@@ -214,7 +213,7 @@
     if (AVAudioSession.sharedInstance.recordPermission == AVAudioSessionRecordPermissionDenied) {
         return;
     }
-//    [_recordButton setTitle:@"按住 说话" forState:UIControlStateNormal];
+//    [_recordButton setTitle:@"Press to talk" forState:UIControlStateNormal];
     NSAssert(self.currVC, @"必选");
     if(!_recordV){
         _recordV = [[HUDAudioView alloc] init];
@@ -225,7 +224,7 @@
     _recordStartTime = [NSDate date];
     [_recordV setStatus:HUDAudioViewRecording];
 //    _recordButton.backgroundColor = [UIColor lightGrayColor];
-//    [_recordButton setTitle:@"松开 结束" forState:UIControlStateNormal];
+//    [_recordButton setTitle:@"Release to send" forState:UIControlStateNormal];
     
     AVAudioSession *session = [AVAudioSession sharedInstance];
     NSError *error = nil;
@@ -266,7 +265,7 @@
     NSTimeInterval interval = _recorder.currentTime;
     if(interval >= 55 && interval < 60){
         NSInteger seconds = 60 - interval;
-        NSString *secondsString = [NSString stringWithFormat:@"将在 %ld 秒后结束录制",(long)seconds + 1];//此处加long，是为了消除编译器警告。此处 +1 是为了向上取整，优化时间逻辑。
+        NSString *secondsString = [NSString stringWithFormat:@"Recording will end in %ld seconds",(long)seconds + 1];//此处加long，是为了消除编译器警告。此处 +1 是为了向上取整，优化时间逻辑。
         _recordV.title.text = secondsString;
     }
     if(interval >= 60){
@@ -296,6 +295,7 @@
     [self release4Recod];
 }
 
+/// 取消录制
 - (void)cancelRecord {
     [self cancelRecordWithState:HUDAudioViewCancel];
 }
