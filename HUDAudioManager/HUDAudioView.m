@@ -17,10 +17,15 @@
 + (void)initialize {
     if(self != HUDAudioView.class) return;
     self.hudBGColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-    self.hudWarningColor = [UIColor colorWithRed:186 green:60 blue:65 alpha:1];
+    self.hudWarningColor = [UIColor colorWithRed:186/255.0 green:60/255.0 blue:65/255.0 alpha:1];
     CGFloat w_screen = UIScreen.mainScreen.bounds.size.width;
     self.hudSize = CGSizeMake(w_screen * 0.4, w_screen * 0.4);
     self.hudInnerMargin = 8;
+    self.titleRecourding    = @"Slide up to cancel";
+    self.titleCancel        = @"Release to Cancel";
+    self.titleTooShort      = @"Message too short";
+    self.titleTooLong       = @"Message too long";
+    
 }
 
 + (UIImage *)imageNamed:(NSString *)name {
@@ -65,7 +70,7 @@
 {
     CGRect screen = [UIScreen mainScreen].bounds;
     CGSize backSize = HUDAudioView.hudSize;
-    _title.text = @"手指上滑，取消发送";
+    _title.text = HUDAudioView.titleRecourding;
     CGSize titleSize = [_title sizeThatFits:CGSizeMake(CGRectGetWidth(screen), CGRectGetHeight(screen))];
     if(titleSize.width > backSize.width){
         backSize.width = titleSize.width + 2 * HUDAudioView.hudInnerMargin;
@@ -83,25 +88,25 @@
     switch (status) {
         case HUDAudioViewRecording:
         {
-            _title.text = @"手指上滑，取消发送";
+            _title.text = HUDAudioView.titleRecourding;
             _title.backgroundColor = [UIColor clearColor];
             break;
         }
         case HUDAudioViewCancel:
         {
-            _title.text = @"松开手指，取消发送";
+            _title.text = HUDAudioView.titleCancel;
             _title.backgroundColor = HUDAudioView.hudWarningColor;
             break;
         }
         case HUDAudioViewTooShort:
         {
-            _title.text = @"说话时间太短";
+            _title.text = HUDAudioView.titleTooShort;
             _title.backgroundColor = [UIColor clearColor];
             break;
         }
         case HUDAudioViewTooLong:
         {
-            _title.text = @"说话时间太长";
+            _title.text = HUDAudioView.titleTooLong;
             _title.backgroundColor = [UIColor clearColor];
             break;
         }
@@ -162,6 +167,45 @@ static CGFloat _hudInnerMargin;
 }
 + (void)setHudInnerMargin:(CGFloat)hudInnerMargin{
     _hudInnerMargin = hudInnerMargin;
+}
+
+static NSString *_titleRecourding;
+
++ (NSString *)titleRecourding {
+    return _titleRecourding;
+}
++ (void)setTitleRecourding:(NSString *)titleRecourding {
+    _titleRecourding = titleRecourding;
+}
+
+static NSString *_titleCancel;
+
++ (NSString *)titleCancel {
+    return _titleCancel;
+}
+
++ (void)setTitleCancel:(NSString *)titleCancel {
+    _titleCancel = titleCancel;
+}
+
+static NSString *_titleTooShort;
+
++ (NSString *)titleTooShort {
+    return _titleTooShort;
+}
+
++ (void)setTitleTooShort:(NSString *)titleTooShort {
+    _titleTooShort = titleTooShort;
+}
+
+static NSString *_titleTooLong;
+
++ (NSString *)titleTooLong {
+    return _titleTooLong;
+}
+
++ (void)setTitleTooLong:(NSString *)titleTooLong {
+    _titleTooLong = titleTooLong;
 }
 
 @end

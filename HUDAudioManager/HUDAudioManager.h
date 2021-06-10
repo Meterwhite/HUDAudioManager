@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)playFile:(NSString *)path completion:(void(^)(void))completion;
 - (void)stopPlayFile;
 #pragma mark - 录制
-/// Need
+/// Need !
 @property (nullable,nonatomic,weak) UIViewController *currVC;
 @property (nullable,nonatomic,copy) void(^whenTips)(NSString *tips);
 - (void)permisionIn:(void(^)(void))block;

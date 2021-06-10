@@ -27,9 +27,21 @@ typedef NS_ENUM(NSUInteger, HUDAudioViewRecordStatus) {
 @interface HUDAudioView : UIView
 
 @property (nonatomic,class) UIColor *hudBGColor;
+
 @property (nonatomic,class) UIColor *hudWarningColor;
+
 @property (nonatomic,class) CGSize  hudSize;
+
 @property (nonatomic,class) CGFloat hudInnerMargin;
+
+@property (nonatomic,class) NSString *titleRecourding;
+
+@property (nonatomic,class) NSString *titleCancel;
+
+@property (nonatomic,class) NSString *titleTooShort;
+
+@property (nonatomic,class) NSString *titleTooLong;
+
 
 /**
  *  录音图标视图。
@@ -69,4 +81,5 @@ typedef NS_ENUM(NSUInteger, HUDAudioViewRecordStatus) {
  *  @param status 想要设置为的状态。
  */
 - (void)setStatus:(HUDAudioViewRecordStatus)status;
+
 @end
